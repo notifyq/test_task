@@ -1,0 +1,47 @@
+﻿@model IEnumerable<test.Models.Model>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelBrand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr style="@(item.ModelActive ? "" : "background-color: #f2f2f2;")">
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelBrand.BrandName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ModelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ModelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ModelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

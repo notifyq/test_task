@@ -1,0 +1,44 @@
+﻿@model IEnumerable<IGrouping<Brand, Model>>
+@{
+    ViewData["Title"] = "BrandModels";
+    List<Brand> brands = ViewBag.Brands;
+}
+
+<h1>BrandModels</h1>
+
+<div>
+@*     <h4>Brands</h4> *@
+@*     <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands">
+        @foreach (var item in ViewBag.Brands)
+        {
+            <option value="@item.BrandId">@item.BrandName</option>
+        }
+    </select> *@
+    <hr />
+    @foreach (var brandGroup in Model)
+{
+    <h3>@brandGroup.Key.BrandName</h3>
+    <table class="table">
+        <thead >
+            <tr>
+                <th>Model Name</th>
+                <th>Model Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in brandGroup)
+            {
+                    <tr style="@(item.ModelActive ? "" : "background-color: #f2f2f2;")">
+                    <td>@item.ModelName</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModelActive)
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+<div>
+
+</div>
