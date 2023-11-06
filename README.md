@@ -2,7 +2,6 @@
 
 Использовано:
 
-- СУБД - PgAdmin 4
 - БД - PostgreSQL
 - IDE - Visual Studio 2022 community
 - ORM - Entity Framework
